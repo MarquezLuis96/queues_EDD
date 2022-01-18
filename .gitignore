@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 *.opendb
 *.mdf
 *.ldf
+=======
+./First_Queues_Assignment/.vs/*
+./First_Queues_Assignment/Debug/*
+*.opendb
+>>>>>>> dev
 
 # Prerequisites
 *.d

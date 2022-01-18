@@ -1,3 +1,7 @@
+./First_Queues_Assignment/.vs/*
+./First_Queues_Assignment/Debug/*
+*.opendb
+
 # Prerequisites
 *.d
 

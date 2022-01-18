@@ -156,7 +156,7 @@ public:
 	void push(dataType key);
 
 	//Extrae el elemento que se encuentre en el tope de la pila
-	void pop();
+	int pop();
 
 	//Limpia toda la pila dejándola vacía
 	void clean();
@@ -207,14 +207,13 @@ template <class dataType> void Stack<dataType>::push(dataType key) {
 
 	top++;
 	stack[top] = key;
-	cout << "Elemento " << key << " insertado con exito." << endl;
 }
 
 //Extrae el elemento que se encuentre en el tope de la pila
-template <class dataType> void Stack<dataType>::pop() {
+template <class dataType> int Stack<dataType>::pop() {
 	if (isEmpty()) {
 		cerr << "Error: Error de UNDERFLOW en la pila." << endl;
-		return;
+		return NULL;
 	}
 
 	dataType key;
@@ -222,7 +221,7 @@ template <class dataType> void Stack<dataType>::pop() {
 	key = stack[top];
 	top--;
 
-	cout << "Elemento " << key << " extraido con exito." << endl;
+	return key;
 }
 
 //Limpia toda la pila dejándola vacía
@@ -265,39 +264,44 @@ template <class dataType> void Stack<dataType>::print() {
 	}
 }
 
+
+bool capicuo(int numero) {
+	ColaCircular<int> colaCircular;
+	Stack<int> pila;
+	int cociente = numero;
+	int resto = 0;
+	while (cociente > 0) {
+		resto = cociente % 10;
+		cociente = cociente / 10;
+		colaCircular.insertarElemento(resto);
+		pila.push(resto);
+	}
+	while (!pila.isEmpty() && !colaCircular.colaVacia()) {
+		if (pila.pop() == colaCircular.extraerElemento()) {
+			continue;
+		}
+		else {
+			return false;
+		}
+	}
+	return true;
+}
+
+
 //FUNCION PRINCIPAL
 int main(int args, const char* argsv[]) {
-	Cola <int> colita;
 
-	/*colita.insertarElemento(10);
-	colita.insertarElemento(20);
-	colita.insertarElemento(30);
-	cout << "El primer elemento es: " << colita.verPrimero() << endl;
-	colita.extraerElemento();
-	cout << "El primer elemento es: " << colita.verPrimero() << endl;*/
+	int numero;
+	cout << "Ingrese un numero: ";
+	cin >> numero;
+	cout << endl;
 
-	ColaCircular <int> colitaCircular;
-	/*colitaCircular.insertarElemento(10);
-	colitaCircular.insertarElemento(20);
-	colitaCircular.insertarElemento(30);
-	cout << "El primer elemento es: " << colitaCircular.verPrimero() << endl;
-	colitaCircular.extraerElemento();
-	cout << "El primer elemento es: " << colitaCircular.verPrimero() << endl;
-	colitaCircular.insertarElemento(40);
-	cout << "El primer elemento es: " << colitaCircular.verPrimero() << endl;
-	colitaCircular.extraerElemento();
-	cout << "El primer elemento es: " << colitaCircular.verPrimero() << endl;
-	colitaCircular.extraerElemento();
-	cout << "El primer elemento es: " << colitaCircular.verPrimero() << endl;*/
-
-	Stack <int> pila;
-	/*pila.push(10);
-	pila.push(20);
-	pila.push(30);
-	pila.push(40);
-	pila.topStack();
-	pila.pop();
-	pila.topStack();*/
+	if (capicuo(numero)) {
+		cout << "capicuo" << endl;
+	}
+	else {
+		cout << "no capicuo" << endl;
+	}
 
 	return 0;
 }

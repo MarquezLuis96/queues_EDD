@@ -77,6 +77,8 @@ int main(int args, const char* argsv[]) {
 	colita.insertarElemento(20);
 	colita.insertarElemento(30);
 	cout << "El primer elemento es: " << colita.verPrimero() << endl;
+	colita.extraerElemento();
+	cout << "El primer elemento es: " << colita.verPrimero() << endl;
 
 	return 0;
 }
